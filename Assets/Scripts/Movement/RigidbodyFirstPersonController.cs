@@ -104,6 +104,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.R))
+                UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             relativevelocity = transform.InverseTransformDirection(m_RigidBody.velocity);
             if (m_IsGrounded)
             {

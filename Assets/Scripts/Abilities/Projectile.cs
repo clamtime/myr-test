@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy") && transform.childCount > 0)
         {
-            BroadcastMessage("ApplyAffector", collision.gameObject);
+            BroadcastMessage("ApplyAffector", collision.gameObject, SendMessageOptions.DontRequireReceiver);
         }
         Destroy(gameObject);        
     }
