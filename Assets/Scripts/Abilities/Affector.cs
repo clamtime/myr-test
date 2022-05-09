@@ -16,7 +16,7 @@ public class Affector : MonoBehaviour
     /// Apply an affectors effect to a GameObject.
     /// </summary>
     /// <param name="target">The game object to apply the affector to.</param>
-    protected virtual void ApplyAffector(GameObject target)
+    public virtual void ApplyAffector(GameObject target)
     {
         targetGameObject = target;
         if (smooth)

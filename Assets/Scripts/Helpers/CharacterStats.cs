@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     // gravity
-    public float gravityScale = 1.0f;
-    public Vector3 gravityDirection = Physics.gravity;
+    public float gravityScale = 9.81f;
+    public Vector3 gravityDirection = Vector3.down;
 
     // transform
     public Vector3 size = Vector3.one;
@@ -58,6 +58,6 @@ public class CharacterStats : MonoBehaviour
     public void ChangeColor(Color col)
     {
         color = col;
-        ren.sharedMaterial.color = color;
+        ren.material.color = color;
     }
 }

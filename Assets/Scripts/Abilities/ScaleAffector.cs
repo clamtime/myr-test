@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityAffector : Affector
+public class ScaleAffector : Affector
 {
-    public float gravityScale;
-    public Vector3 gravityDirection;
+    public Vector3 size;
 
     public override void ApplyAffector(GameObject target)
     {
@@ -21,13 +20,11 @@ public class GravityAffector : Affector
             {
                 if (relative)
                 {
-                    targetStats.ChangeGravity(
-                        targetStats.gravityScale + gravityScale,
-                        targetStats.gravityDirection + gravityDirection);
+                    targetStats.ChangeSize(targetStats.size + size);
                 }
                 else
                 {
-                    targetStats.ChangeGravity(gravityScale, gravityDirection);
+                    targetStats.ChangeSize(size);
                 }
             }
         }
@@ -36,20 +33,17 @@ public class GravityAffector : Affector
     protected override IEnumerator SmoothAffectorApplication(float timeToApply, CharacterStats targetStats)
     {
         float normT = 0.0f;
-        float originalScale = targetStats.gravityScale;
-        Vector3 originalDirection = targetStats.gravityDirection;
+        Vector3 originalSize = targetStats.size;
 
         while (normT < 1.0f)
         {
             if (relative)
             {
-                targetStats.ChangeGravity( 
-                    originalScale + (gravityScale * normT),
-                    originalDirection + (gravityDirection * normT));
+                targetStats.ChangeSize(originalSize + (size * normT));
             }
             else
             {
-                targetStats.ChangeGravity(gravityScale * normT, gravityDirection * normT);
+                targetStats.ChangeSize(size * normT);
             }
 
             normT += Time.deltaTime / timeToApply;
